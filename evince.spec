@@ -2,7 +2,7 @@
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 0.8.0
+Version: 0.8.1
 Release: %mkrel 1
 License: GPL
 Group:   Graphical desktop/GNOME
@@ -125,5 +125,3 @@ rm -rf $RPM_BUILD_ROOT
 %_mandir/man1/evince.1*
 %_libdir/nautilus/extensions-*/libevince*so*
 %{_menudir}/*
-
-
