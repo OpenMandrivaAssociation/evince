@@ -115,6 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %build_dvi
 %_sysconfdir/gconf/schemas/%name-thumbnailer-dvi.schemas
 %endif
+%_sysconfdir/gconf/schemas/%name-thumbnailer-ps.schemas
 %{_bindir}/*
 %{_datadir}/evince
 %{_datadir}/applications/*
