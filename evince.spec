@@ -88,7 +88,7 @@ rm -f %buildroot%_libdir/nautilus/extensions-*/libevince*a
 %update_scrollkeeper
 %{update_menus}
 %update_desktop_database
-%define schemas %name %name-thumbnailer %name-thumbnailer-djvu %{?build_dvi:%name-thumbnailer-dvi} evince-thumbnailer-comics
+%define schemas %name %name-thumbnailer %name-thumbnailer-djvu %{?build_dvi:%name-thumbnailer-dvi} evince-thumbnailer-comics evince-thumbnailer-ps
 %post_install_gconf_schemas %schemas
 %update_icon_cache hicolor
 
