@@ -2,8 +2,8 @@
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 0.9.0
-Release: %mkrel 2
+Version: 0.9.1
+Release: %mkrel 1
 License: GPL
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
@@ -15,7 +15,7 @@ BuildRequires: libgnomeprintui-devel >= 2.2
 BuildRequires: libglade2.0-devel
 BuildRequires: libgnomeui2-devel
 BuildRequires: libxt-devel
-BuildRequires: libpoppler-devel >= 0.5.4
+BuildRequires: libpoppler-devel >= 0.5.9
 BuildRequires: nautilus-devel
 BuildRequires: libtiff-devel
 BuildRequires: libxslt-proc
