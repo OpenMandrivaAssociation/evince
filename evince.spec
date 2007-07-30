@@ -33,6 +33,7 @@ BuildRequires: gnome-common
 BuildRequires: gtk-doc
 BuildRequires: intltool
 BuildRequires:	desktop-file-utils
+BuildRequires: libgcrypt-devel
 Requires(post): scrollkeeper desktop-file-utils
 Requires(postun): scrollkeeper desktop-file-utils
 
