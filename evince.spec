@@ -3,7 +3,7 @@
 Summary: GNOME Document viewer
 Name:    evince
 Version: 0.9.3
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPL
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
@@ -11,7 +11,6 @@ Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz
 Patch1: evince-kpathsea-link.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: ghostscript ghostscript-module-X
-BuildRequires: libgnomeprintui-devel >= 2.2
 BuildRequires: libglade2.0-devel
 BuildRequires: libgnomeui2-devel
 BuildRequires: libxt-devel
@@ -50,7 +49,7 @@ autoconf
 automake
 
 %build
-%configure2_5x --enable-tiff --enable-djvu --enable-pixbuf --enable-comics \
+%configure2_5x --enable-print=gtk --enable-tiff --enable-djvu --enable-pixbuf --enable-comics \
  --enable-impress \
 %if %build_dvi
  --enable-dvi
