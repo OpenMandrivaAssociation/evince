@@ -44,6 +44,7 @@ GNOME Document viewer, supports PDF and PostScript.
 %if %build_dvi
 %patch1 -p1 -b .makefile
 %endif
+intltoolize --copy --force
 aclocal
 autoconf
 automake
