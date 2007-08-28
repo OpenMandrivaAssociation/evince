@@ -22,7 +22,7 @@ BuildRequires: libxslt-proc
 %if %build_dvi
 BuildRequires: tetex-devel >= tetex-devel-3.0-22mdv
 %endif
-BuildRequires: libdjvulibre-devel >= 3.5.17
+BuildRequires: djvulibre-devel >= 3.5.17
 BuildRequires: scrollkeeper
 BuildRequires: ghostscript
 BuildRequires: perl-XML-Parser
