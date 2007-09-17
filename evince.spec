@@ -2,21 +2,19 @@
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 2.19.92
+Version: 2.20.0
 Release: %mkrel 1
 License: GPL
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-# fix mime list in the desktop file, see http://bugzilla.gnome.org/show_bug.cgi?id=473471
-Patch: evince-2.19.92-fix-mime-list-generation.patch
 Patch1: evince-kpathsea-link.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: ghostscript ghostscript-module-X
 BuildRequires: libglade2.0-devel
 BuildRequires: libgnomeui2-devel
 BuildRequires: libxt-devel
-BuildRequires: libpopplerglib-devel >= 0.6
+BuildRequires: libpoppler-glib-devel >= 0.6
 BuildRequires: nautilus-devel
 BuildRequires: libtiff-devel
 BuildRequires: libxslt-proc
@@ -43,7 +41,6 @@ GNOME Document viewer, supports PDF and PostScript.
 
 %prep
 %setup -q
-%patch -p1
 %if %build_dvi
 %patch1 -p1 -b .makefile
 %endif
