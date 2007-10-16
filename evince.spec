@@ -2,15 +2,13 @@
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 2.20.0
-Release: %mkrel 2
+Version: 2.20.1
+Release: %mkrel 1
 License: GPL
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 Patch1: evince-kpathsea-link.patch
-# (fc) 2.20.0-2mdv various fixes from SVN, mostly for forms (SVN)
-Patch2: evince-2.20.0-svnfixes.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: ghostscript ghostscript-module-X
 BuildRequires: libglade2.0-devel
@@ -46,7 +44,6 @@ GNOME Document viewer, supports PDF and PostScript.
 %if %build_dvi
 %patch1 -p1 -b .makefile
 %endif
-%patch2 -p1 -b .svnfixes
 intltoolize --copy --force
 aclocal
 autoconf
