@@ -3,7 +3,7 @@
 Summary: GNOME Document viewer
 Name:    evince
 Version: 2.20.1
-Release: %mkrel 2
+Release: %mkrel 3
 License: GPL
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
