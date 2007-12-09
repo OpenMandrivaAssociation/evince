@@ -72,17 +72,10 @@ for omf in %buildroot%_datadir/omf/*/{*-??,*-??_??}.omf;do
 echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed s!%buildroot!!)" >> Evince.lang
 done
 
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF >  $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}): command="%{_bindir}/%name" icon="publishing_section.png" needs="x11" title="Document Viewer" longtitle="View PDF or PS files" section="Office/Publishing" startup_notify="true" mimetypes="application/pdf;application/postscript;application/x-gzpostscript;application/x-dvi;image/tiff;image/vnd.djvu" accept_url="true" multiple_files="true" xdg="true"
-EOF
 desktop-file-install --vendor="" \
   --remove-category="Application" \
   --add-category="X-MandrivaLinux-Office-Publishing" \
   --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
-
-
-
 
 rm -f %buildroot%_libdir/nautilus/extensions-*/libevince*a
 
@@ -127,4 +120,3 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/gtk-doc/html/evince/
 %_mandir/man1/evince.1*
 %_libdir/nautilus/extensions-*/libevince*so*
-%{_menudir}/*
