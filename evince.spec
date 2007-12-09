@@ -31,7 +31,6 @@ BuildRequires: gnome-doc-utils
 BuildRequires: gnome-common
 BuildRequires: gtk-doc
 BuildRequires: intltool
-BuildRequires:	desktop-file-utils
 BuildRequires: libgcrypt-devel
 Requires(post): scrollkeeper desktop-file-utils
 Requires(postun): scrollkeeper desktop-file-utils
@@ -71,11 +70,6 @@ cat %name.lang >> Evince.lang
 for omf in %buildroot%_datadir/omf/*/{*-??,*-??_??}.omf;do
 echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed s!%buildroot!!)" >> Evince.lang
 done
-
-desktop-file-install --vendor="" \
-  --remove-category="Application" \
-  --add-category="X-MandrivaLinux-Office-Publishing" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications $RPM_BUILD_ROOT%{_datadir}/applications/*
 
 rm -f %buildroot%_libdir/nautilus/extensions-*/libevince*a
 
