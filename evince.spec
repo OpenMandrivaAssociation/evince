@@ -86,7 +86,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f Evince.lang
 %defattr(-,root,root,-)
-%doc ChangeLog NEWS AUTHORS TODO
+%doc NEWS AUTHORS TODO
 # README
 %_sysconfdir/gconf/schemas/%name.schemas
 %_sysconfdir/gconf/schemas/%name-thumbnailer.schemas
