@@ -3,11 +3,12 @@
 Summary: GNOME Document viewer
 Name:    evince
 Version: 2.21.1
-Release: %mkrel 3
+Release: %mkrel 4
 License: GPL
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+Patch1: evince-kpathsea-link.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: ghostscript ghostscript-module-X
 BuildRequires: libglade2.0-devel
@@ -19,7 +20,9 @@ BuildRequires: libtiff-devel
 BuildRequires: libxslt-proc
 #BuildRequires: t1lib-devel
 %if %build_dvi
-BuildRequires: kpathsea-devel
+BuildRequires: tetex-devel >= tetex-devel-3.0-22mdv
+#gw just like xdvi, needed for rendering the fonts
+Suggests: tetex
 %endif
 BuildRequires: djvulibre-devel >= 3.5.17
 BuildRequires: scrollkeeper
@@ -39,6 +42,9 @@ GNOME Document viewer, supports PDF and PostScript.
 
 %prep
 %setup -q
+%if %build_dvi
+%patch1 -p1 -b .makefile
+%endif
 
 %build
 %configure2_5x --enable-print=gtk --enable-tiff --enable-djvu --enable-pixbuf --enable-comics \
