@@ -3,7 +3,7 @@
 Summary: GNOME Document viewer
 Name:    evince
 Version: 2.21.1
-Release: %mkrel 4
+Release: %mkrel 5
 License: GPL
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
@@ -68,6 +68,9 @@ for omf in %buildroot%_datadir/omf/*/{*-??,*-??_??}.omf;do
 echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed s!%buildroot!!)" >> Evince.lang
 done
 
+cd %buildroot%_libdir/nautilus/
+mv extensions-1.0 extensions-2.0
+
 rm -f %buildroot%_libdir/nautilus/extensions-*/libevince*a
 
 %post
@@ -110,4 +113,4 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/omf/%name/%name-C.omf
 %_datadir/gtk-doc/html/evince/
 %_mandir/man1/evince.1*
-%_libdir/nautilus/extensions-*/libevince*so*
+%_libdir/nautilus/extensions-2.0/libevince*so*
