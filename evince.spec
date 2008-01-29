@@ -1,9 +1,12 @@
 %define build_dvi 1
+%define major 0
+%define libname %mklibname evince %major
+%define develname %mklibname -d evince
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 2.21.1
-Release: %mkrel 5
+Version: 2.21.90
+Release: %mkrel 1
 License: GPL
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
@@ -15,6 +18,7 @@ BuildRequires: libglade2.0-devel
 BuildRequires: libgnomeui2-devel
 BuildRequires: libxt-devel
 BuildRequires: libpoppler-glib-devel >= 0.6
+#BuildRequires: libspectre-devel
 BuildRequires: nautilus-devel
 BuildRequires: libtiff-devel
 BuildRequires: libxslt-proc
@@ -38,7 +42,23 @@ Requires(post): scrollkeeper desktop-file-utils
 Requires(postun): scrollkeeper desktop-file-utils
 
 %description
-GNOME Document viewer, supports PDF and PostScript.
+GNOME Document viewer, supports PDF, PostScript and other formats.
+
+%package -n %libname
+Group:System/Libraries
+Summary: GNOME Document viewer library
+
+%description -n %libname
+This is the GNOME Document viewer library, the shared parts of evince.
+
+%package -n %develname
+Group:Development/C
+Summary: GNOME Document viewer library
+Requires: %libname = %version
+Provides: libevince-devel = %version-%release
+
+%description -n %develname
+This is the GNOME Document viewer library, the shared parts of evince.
 
 %prep
 %setup -q
@@ -68,10 +88,8 @@ for omf in %buildroot%_datadir/omf/*/{*-??,*-??_??}.omf;do
 echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed s!%buildroot!!)" >> Evince.lang
 done
 
-cd %buildroot%_libdir/nautilus/
-mv extensions-1.0 extensions-2.0
-
-rm -f %buildroot%_libdir/nautilus/extensions-*/libevince*a
+rm -f %buildroot%_libdir/nautilus/extensions-*/libevince*a \
+      %buildroot%_libdir/evince/backends/lib*a %buildroot%_libdir/lib*.a
 
 %post
 %update_scrollkeeper
@@ -89,6 +107,9 @@ rm -f %buildroot%_libdir/nautilus/extensions-*/libevince*a
 %{clean_menus}
 %clean_desktop_database
 %clean_icon_cache hicolor
+
+%post -n %libname -p /sbin/ldconfig
+%postun -n %libname -p /sbin/ldconfig
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -111,6 +132,27 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/icons/hicolor/*/apps/evince*
 %dir %_datadir/omf/%name
 %_datadir/omf/%name/%name-C.omf
-%_datadir/gtk-doc/html/evince/
 %_mandir/man1/evince.1*
 %_libdir/nautilus/extensions-2.0/libevince*so*
+%dir %_libdir/evince/backends
+%_libdir/evince/backends/lib*
+%_libdir/evince/backends/comicsdocument.evince-backend
+%_libdir/evince/backends/djvudocument.evince-backend
+%_libdir/evince/backends/dvidocument.evince-backend
+%_libdir/evince/backends/impressdocument.evince-backend
+%_libdir/evince/backends/pdfdocument.evince-backend
+%_libdir/evince/backends/pixbufdocument.evince-backend
+%_libdir/evince/backends/psdocument.evince-backend
+%_libdir/evince/backends/tiffdocument.evince-backend
+
+%files -n %libname
+%defattr(-,root,root,-)
+%_libdir/libevbackend.so.%{major}*
+
+%files -n %develname
+%defattr(-,root,root,-)
+%doc ChangeLog
+%_datadir/gtk-doc/html/evince/
+%_libdir/libevbackend.so
+%_libdir/libevbackend.la
+%_includedir/evince*
