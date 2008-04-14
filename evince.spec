@@ -41,7 +41,7 @@ Requires(post): scrollkeeper desktop-file-utils
 Requires(postun): scrollkeeper desktop-file-utils
 
 %description
-GNOME Document viewer, supports PDF, PostScript and other formats.
+Evince is the GNOME Document viewer. Its supports PDF, PostScript and other formats.
 
 %package -n %libname
 Group:System/Libraries
