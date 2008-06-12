@@ -88,21 +88,27 @@ rm -f %buildroot%_libdir/nautilus/extensions-*/libevince*a \
       %buildroot%_libdir/evince/backends/lib*a %buildroot%_libdir/lib*.a
 
 %post
+%if %mdkversion < 200900
 %update_scrollkeeper
 %{update_menus}
 %update_desktop_database
+%endif
 %define schemas %name %name-thumbnailer %name-thumbnailer-djvu %{?build_dvi:%name-thumbnailer-dvi} evince-thumbnailer-comics evince-thumbnailer-ps
+%if %mdkversion < 200900
 %post_install_gconf_schemas %schemas
 %update_icon_cache hicolor
+%endif
 
 %preun
 %preun_uninstall_gconf_schemas %schemas
 
+%if %mdkversion < 200900
 %postun
 %clean_scrollkeeper
 %{clean_menus}
 %clean_desktop_database
 %clean_icon_cache hicolor
+%endif
 
 %if %mdkversion < 200900
 %post -n %libname -p /sbin/ldconfig
