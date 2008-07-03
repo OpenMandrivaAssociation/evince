@@ -5,9 +5,9 @@
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 2.22.2
+Version: 2.23.4
 Release: %mkrel 1
-License: GPL
+License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
@@ -28,15 +28,14 @@ BuildRequires: tetex-devel >= tetex-devel-3.0-22mdv
 Suggests: tetex
 %endif
 BuildRequires: djvulibre-devel >= 3.5.17
+BuildRequires: libgcrypt-devel
 BuildRequires: scrollkeeper
 BuildRequires: ghostscript
-BuildRequires: perl-XML-Parser
+BuildRequires: intltool
 #gw if we run autoconf
 BuildRequires: gnome-doc-utils
 BuildRequires: gnome-common
 BuildRequires: gtk-doc
-BuildRequires: intltool
-BuildRequires: libgcrypt-devel
 Requires(post): scrollkeeper desktop-file-utils
 Requires(postun): scrollkeeper desktop-file-utils
 
