@@ -11,8 +11,6 @@ License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-#gw: http://bugzilla.gnome.org/show_bug.cgi?id=568216
-Patch: evince-2.25.5-missing.patch
 Patch1: evince-2.25.5-fix-linking.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: ghostscript ghostscript-module-X
@@ -64,7 +62,6 @@ This is the GNOME Document viewer library, the shared parts of evince.
 
 %prep
 %setup -q
-%patch -p1
 %patch1 -p1 -b .fix-linking
 autoreconf
 
