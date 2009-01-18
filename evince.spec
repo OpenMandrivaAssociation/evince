@@ -5,12 +5,15 @@
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 2.25.4
+Version: 2.25.5
 Release: %mkrel 1
 License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+#gw: http://bugzilla.gnome.org/show_bug.cgi?id=568216
+Patch: evince-2.25.5-missing.patch
+Patch1: evince-2.25.5-fix-linking.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: ghostscript ghostscript-module-X
 BuildRequires: libglade2.0-devel
@@ -61,6 +64,9 @@ This is the GNOME Document viewer library, the shared parts of evince.
 
 %prep
 %setup -q
+%patch -p1
+%patch1 -p1 -b .fix-linking
+autoreconf
 
 %build
 %configure2_5x --enable-tiff --enable-djvu --enable-pixbuf --enable-comics \
@@ -154,11 +160,13 @@ rm -rf $RPM_BUILD_ROOT
 %files -n %libname
 %defattr(-,root,root,-)
 %_libdir/libevbackend.so.%{major}*
+%_libdir/libevview.so.%{major}*
 
 %files -n %develname
 %defattr(-,root,root,-)
 %doc ChangeLog
 %_datadir/gtk-doc/html/evince/
 %_libdir/libevbackend.so
-%_libdir/libevbackend.la
+%_libdir/libevview.so
+%_libdir/*.la
 %_includedir/evince*
