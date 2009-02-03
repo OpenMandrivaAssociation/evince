@@ -1,17 +1,17 @@
 %define build_dvi 1
-%define major 0
+%define major 1
 %define libname %mklibname evince %major
 %define develname %mklibname -d evince
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 2.25.5
+Version: 2.25.90
 Release: %mkrel 1
 License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-Patch1: evince-2.25.5-fix-linking.patch
+Patch1: evince-2.25.90-fix-linking.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: ghostscript ghostscript-module-X
 BuildRequires: libglade2.0-devel
@@ -63,7 +63,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %prep
 %setup -q
 %patch1 -p1 -b .fix-linking
-autoreconf
+autoreconf -fi
 
 %build
 %configure2_5x --enable-tiff --enable-djvu --enable-pixbuf --enable-comics \
@@ -88,7 +88,7 @@ echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed s!%buil
 done
 
 rm -f %buildroot%_libdir/nautilus/extensions-*/libevince*a \
-      %buildroot%_libdir/evince/backends/lib*a %buildroot%_libdir/lib*.a
+      %buildroot%_libdir/evince/*/backends/lib*a %buildroot%_libdir/lib*.a
 
 %post
 %if %mdkversion < 200900
@@ -143,27 +143,31 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/omf/%name/%name-C.omf
 %_mandir/man1/evince.1*
 %_libdir/nautilus/extensions-2.0/libevince*so*
-%dir %_libdir/evince/backends
-%_libdir/evince/backends/lib*
-%_libdir/evince/backends/comicsdocument.evince-backend
-%_libdir/evince/backends/djvudocument.evince-backend
-%_libdir/evince/backends/dvidocument.evince-backend
-%_libdir/evince/backends/impressdocument.evince-backend
-%_libdir/evince/backends/pdfdocument.evince-backend
-%_libdir/evince/backends/pixbufdocument.evince-backend
-%_libdir/evince/backends/psdocument.evince-backend
-%_libdir/evince/backends/tiffdocument.evince-backend
+%dir %_libdir/evince/1/
+%dir %_libdir/evince/1/backends
+%_libdir/evince/1/backends/lib*
+%_libdir/evince/1/backends/comicsdocument.evince-backend
+%_libdir/evince/1/backends/djvudocument.evince-backend
+%_libdir/evince/1/backends/dvidocument.evince-backend
+%_libdir/evince/1/backends/impressdocument.evince-backend
+%_libdir/evince/1/backends/pdfdocument.evince-backend
+%_libdir/evince/1/backends/pixbufdocument.evince-backend
+%_libdir/evince/1/backends/psdocument.evince-backend
+%_libdir/evince/1/backends/tiffdocument.evince-backend
 
 %files -n %libname
 %defattr(-,root,root,-)
-%_libdir/libevbackend.so.%{major}*
+%_libdir/libevdocument.so.%{major}*
 %_libdir/libevview.so.%{major}*
 
 %files -n %develname
 %defattr(-,root,root,-)
 %doc ChangeLog
-%_datadir/gtk-doc/html/evince/
-%_libdir/libevbackend.so
+%_datadir/gtk-doc/html/evince
+%_datadir/gtk-doc/html/libevdocument
+%_datadir/gtk-doc/html/libevview
+%_libdir/libevdocument.so
 %_libdir/libevview.so
 %_libdir/*.la
+%_libdir/pkgconfig/evince*pc
 %_includedir/evince*
