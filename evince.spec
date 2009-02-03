@@ -23,6 +23,8 @@ BuildRequires: libspectre-devel
 BuildRequires: nautilus-devel
 BuildRequires: libtiff-devel
 BuildRequires: libxslt-proc
+#gw libtool dep (GConf2?)
+BuildRequires: dbus-glib-devel
 #BuildRequires: t1lib-devel
 %if %build_dvi
 BuildRequires: tetex-devel >= tetex-devel-3.0-22mdv
