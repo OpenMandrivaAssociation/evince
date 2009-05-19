@@ -5,7 +5,7 @@
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 2.26.2
+Version: 2.27.1
 Release: %mkrel 1
 License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
@@ -18,7 +18,7 @@ BuildRequires: libglade2.0-devel
 BuildRequires: libGConf2-devel
 BuildRequires: gnome-keyring-devel
 BuildRequires: libxt-devel
-BuildRequires: libpoppler-glib-devel >= 0.6
+BuildRequires: libpoppler-glib-devel >= 0.11.0
 BuildRequires: libspectre-devel
 BuildRequires: nautilus-devel
 BuildRequires: libtiff-devel
@@ -65,7 +65,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %prep
 %setup -q
 %patch1 -p1
-autoreconf -fi
+./autogen.sh
 
 %build
 %configure2_5x --enable-tiff --enable-djvu --enable-pixbuf --enable-comics \
