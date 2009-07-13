@@ -5,7 +5,7 @@
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 2.27.3
+Version: 2.27.4
 Release: %mkrel 1
 License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
