@@ -23,6 +23,7 @@ BuildRequires: libspectre-devel
 BuildRequires: nautilus-devel
 BuildRequires: libtiff-devel
 BuildRequires: libxslt-proc
+BuildRequires: gobject-introspection-devel gir-repository
 #gw libtool dep (GConf2?)
 BuildRequires: dbus-glib-devel
 #BuildRequires: t1lib-devel
@@ -71,8 +72,9 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %configure2_5x --enable-tiff --enable-djvu --enable-pixbuf --enable-comics \
  --enable-impress \
 %if %build_dvi
- --enable-dvi
+ --enable-dvi \
 %endif
+--enable-introspection
 #--enable-t1lib 
 
 %make
@@ -173,3 +175,8 @@ rm -rf $RPM_BUILD_ROOT
 %_libdir/*.la
 %_libdir/pkgconfig/evince*pc
 %_includedir/evince*
+%_libdir/girepository-1.0/EvinceDocument-2.25.typelib
+%_libdir/girepository-1.0/EvinceView-2.25.typelib
+%_datadir/gir-1.0/EvinceDocument-2.25.gir
+%_datadir/gir-1.0/EvinceView-2.25.gir
+
