@@ -6,7 +6,7 @@
 Summary: GNOME Document viewer
 Name:    evince
 Version: 2.27.90
-Release: %mkrel 1
+Release: %mkrel 2
 License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
@@ -163,6 +163,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %_libdir/libevdocument.so.%{major}*
 %_libdir/libevview.so.%{major}*
+%_libdir/girepository-1.0/EvinceDocument-2.25.typelib
+%_libdir/girepository-1.0/EvinceView-2.25.typelib
 
 %files -n %develname
 %defattr(-,root,root,-)
@@ -175,8 +177,6 @@ rm -rf $RPM_BUILD_ROOT
 %_libdir/*.la
 %_libdir/pkgconfig/evince*pc
 %_includedir/evince*
-%_libdir/girepository-1.0/EvinceDocument-2.25.typelib
-%_libdir/girepository-1.0/EvinceView-2.25.typelib
 %_datadir/gir-1.0/EvinceDocument-2.25.gir
 %_datadir/gir-1.0/EvinceView-2.25.gir
 
