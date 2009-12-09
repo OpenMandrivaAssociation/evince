@@ -1,11 +1,12 @@
 %define build_dvi 1
-%define major 1
+%define major 2
+%define api 2.29
 %define libname %mklibname evince %major
 %define develname %mklibname -d evince
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 2.28.1
+Version: 2.29.3
 Release: %mkrel 1
 License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
@@ -24,8 +25,6 @@ BuildRequires: nautilus-devel
 BuildRequires: libtiff-devel
 BuildRequires: libxslt-proc
 BuildRequires: gobject-introspection-devel gir-repository
-#gw libtool dep (GConf2?)
-BuildRequires: dbus-glib-devel
 #BuildRequires: t1lib-devel
 %if %build_dvi
 BuildRequires: tetex-devel >= tetex-devel-3.0-22mdv
@@ -147,24 +146,27 @@ rm -rf $RPM_BUILD_ROOT
 %_datadir/omf/%name/%name-C.omf
 %_mandir/man1/evince.1*
 %_libdir/nautilus/extensions-2.0/libevince*so*
-%dir %_libdir/evince/1/
-%dir %_libdir/evince/1/backends
-%_libdir/evince/1/backends/lib*
-%_libdir/evince/1/backends/comicsdocument.evince-backend
-%_libdir/evince/1/backends/djvudocument.evince-backend
-%_libdir/evince/1/backends/dvidocument.evince-backend
-%_libdir/evince/1/backends/impressdocument.evince-backend
-%_libdir/evince/1/backends/pdfdocument.evince-backend
-%_libdir/evince/1/backends/pixbufdocument.evince-backend
-%_libdir/evince/1/backends/psdocument.evince-backend
-%_libdir/evince/1/backends/tiffdocument.evince-backend
+%dir %_libdir/evince/%major/
+%dir %_libdir/evince/%major/backends
+%_libdir/evince/%major/backends/lib*
+%_libdir/evince/%major/backends/comicsdocument.evince-backend
+%_libdir/evince/%major/backends/djvudocument.evince-backend
+%_libdir/evince/%major/backends/dvidocument.evince-backend
+%_libdir/evince/%major/backends/impressdocument.evince-backend
+%_libdir/evince/%major/backends/pdfdocument.evince-backend
+%_libdir/evince/%major/backends/pixbufdocument.evince-backend
+%_libdir/evince/%major/backends/psdocument.evince-backend
+%_libdir/evince/%major/backends/tiffdocument.evince-backend
+%_libexecdir/evince-convert-metadata
+%_libexecdir/evinced
+%_datadir/dbus-1/services/org.gnome.evince.Daemon.service
 
 %files -n %libname
 %defattr(-,root,root,-)
 %_libdir/libevdocument.so.%{major}*
 %_libdir/libevview.so.%{major}*
-%_libdir/girepository-1.0/EvinceDocument-2.25.typelib
-%_libdir/girepository-1.0/EvinceView-2.25.typelib
+%_libdir/girepository-1.0/EvinceDocument-%api.typelib
+%_libdir/girepository-1.0/EvinceView-%api.typelib
 
 %files -n %develname
 %defattr(-,root,root,-)
@@ -177,6 +179,6 @@ rm -rf $RPM_BUILD_ROOT
 %_libdir/*.la
 %_libdir/pkgconfig/evince*pc
 %_includedir/evince*
-%_datadir/gir-1.0/EvinceDocument-2.25.gir
-%_datadir/gir-1.0/EvinceView-2.25.gir
+%_datadir/gir-1.0/EvinceDocument-%api.gir
+%_datadir/gir-1.0/EvinceView-%api.gir
 
