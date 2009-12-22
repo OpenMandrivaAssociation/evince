@@ -16,7 +16,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: ghostscript ghostscript-module-X
 BuildRequires: libglade2.0-devel
 BuildRequires: libGConf2-devel
-BuildRequires: gnome-keyring-devel
+BuildRequires: libgnome-keyring-devel
 BuildRequires: libxt-devel
 BuildRequires: libpoppler-glib-devel >= 0.11.0
 BuildRequires: libspectre-devel
