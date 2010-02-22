@@ -6,7 +6,7 @@
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 2.29.5
+Version: 2.29.91
 Release: %mkrel 1
 License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
@@ -70,7 +70,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %if %build_dvi
  --enable-dvi \
 %endif
---enable-introspection
+--enable-introspection --enable-gtk-doc
 #--enable-t1lib 
 
 %make
@@ -169,8 +169,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc ChangeLog
 %_datadir/gtk-doc/html/evince
-%_datadir/gtk-doc/html/libevdocument
-%_datadir/gtk-doc/html/libevview
+%_datadir/gtk-doc/html/libevdocument-%api
+%_datadir/gtk-doc/html/libevview-%api
 %_libdir/libevdocument.so
 %_libdir/libevview.so
 %_libdir/*.la
