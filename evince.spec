@@ -1,12 +1,12 @@
 %define build_dvi 1
 %define major 2
-%define api 2.29
+%define api 2.30
 %define libname %mklibname evince %major
 %define develname %mklibname -d evince
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 2.29.92
+Version: 2.30.0
 Release: %mkrel 1
 License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
