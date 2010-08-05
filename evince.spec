@@ -1,4 +1,5 @@
 %define build_dvi 1
+%define build_impress 1
 %define major 2
 %define api 2.30
 %define libname %mklibname evince %major
@@ -6,24 +7,26 @@
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 2.30.3
-Release: %mkrel 2
+Version: 2.31.6.1
+Release: %mkrel 1
 License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: ghostscript ghostscript-module-X
-BuildRequires: libglade2.0-devel
-BuildRequires: libGConf2-devel
+BuildRequires: libGConf2-devel >= 2.31.2
+BuildRequires: gtk+2-devel
+BuildRequires: libgail-devel
 BuildRequires: libgnome-keyring-devel
 BuildRequires: libxt-devel
-BuildRequires: libpoppler-glib-devel >= 0.11.0
+BuildRequires: libpoppler-glib-devel >= 0.14.0
 BuildRequires: libspectre-devel
 BuildRequires: nautilus-devel
 BuildRequires: libtiff-devel
 BuildRequires: libxslt-proc
 BuildRequires: gobject-introspection-devel
+BuildRequires: glib2-devel >= 2.25.3
 #BuildRequires: t1lib-devel
 %if %build_dvi
 BuildRequires: tetex-devel >= tetex-devel-3.0-22mdv
@@ -67,19 +70,21 @@ This is the GNOME Document viewer library, the shared parts of evince.
 
 %build
 %configure2_5x --enable-tiff --enable-djvu --enable-pixbuf --enable-comics \
+%if %build_impress
  --enable-impress \
+%endif
 %if %build_dvi
  --enable-dvi \
 %endif
 --enable-introspection --enable-gtk-doc
 #--enable-t1lib 
 
-%make
+%make  GLIB_COMPILE_SCHEMAS=/usr/bin/glib-compile-schemas
 
 %install
 rm -rf $RPM_BUILD_ROOT %name.lang
 
-GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 %makeinstall_std _ENABLE_SK=no
+GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 %makeinstall_std _ENABLE_SK=no   GLIB_COMPILE_SCHEMAS=/usr/bin/glib-compile-schemas
 
 %find_lang Evince --with-gnome
 %find_lang %name --with-gnome
@@ -89,7 +94,9 @@ echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed s!%buil
 done
 
 rm -f %buildroot%_libdir/nautilus/extensions-*/libevince*a \
-      %buildroot%_libdir/evince/*/backends/lib*a %buildroot%_libdir/lib*.a
+      %buildroot%_libdir/evince/*/backends/lib*a %buildroot%_libdir/lib*.a \
+      %buildroot%_datadir/glib-2.0/schemas/gschemas.compiled
+
 
 %post
 %if %mdkversion < 200900
@@ -97,7 +104,7 @@ rm -f %buildroot%_libdir/nautilus/extensions-*/libevince*a \
 %{update_menus}
 %update_desktop_database
 %endif
-%define schemas %name %name-thumbnailer %name-thumbnailer-djvu %{?build_dvi:%name-thumbnailer-dvi} evince-thumbnailer-comics evince-thumbnailer-ps
+%define schemas %name-thumbnailer %name-thumbnailer-djvu %{?build_dvi:%name-thumbnailer-dvi} evince-thumbnailer-comics evince-thumbnailer-ps
 %if %mdkversion < 200900
 %post_install_gconf_schemas %schemas
 %update_icon_cache hicolor
@@ -128,7 +135,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc NEWS AUTHORS TODO
 # README
-%_sysconfdir/gconf/schemas/%name.schemas
 %_sysconfdir/gconf/schemas/%name-thumbnailer.schemas
 %_sysconfdir/gconf/schemas/%name-thumbnailer-djvu.schemas
 %_sysconfdir/gconf/schemas/%name-thumbnailer-comics.schemas
@@ -140,6 +146,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/evince
 %{_datadir}/applications/*
 %_datadir/icons/hicolor/*/apps/evince*
+%_datadir/glib-2.0/schemas/org.gnome.Evince.gschema.xml
+%_datadir/GConf/gsettings/evince.convert
 %dir %_datadir/omf/%name
 %_datadir/omf/%name/%name-C.omf
 %_mandir/man1/evince.1*
@@ -150,7 +158,9 @@ rm -rf $RPM_BUILD_ROOT
 %_libdir/evince/%major/backends/comicsdocument.evince-backend
 %_libdir/evince/%major/backends/djvudocument.evince-backend
 %_libdir/evince/%major/backends/dvidocument.evince-backend
+%if %build_impress
 %_libdir/evince/%major/backends/impressdocument.evince-backend
+%endif
 %_libdir/evince/%major/backends/pdfdocument.evince-backend
 %_libdir/evince/%major/backends/pixbufdocument.evince-backend
 %_libdir/evince/%major/backends/psdocument.evince-backend
