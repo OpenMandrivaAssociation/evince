@@ -1,19 +1,18 @@
 %define build_dvi 1
 %define build_impress 1
-%define major 2
-%define api 2.30
+%define major 3
+%define api 2.32
 %define libname %mklibname evince %major
 %define develname %mklibname -d evince
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 2.31.6.1
-Release: %mkrel 2
+Version: 2.31.90
+Release: %mkrel 1
 License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
-Patch0: evince-select-right-gtk-version-in-pkgconfig-file.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: ghostscript ghostscript-module-X
 BuildRequires: libGConf2-devel >= 2.31.2
