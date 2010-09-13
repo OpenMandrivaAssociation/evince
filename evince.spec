@@ -7,7 +7,7 @@
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 2.31.90
+Version: 2.31.92
 Release: %mkrel 1
 License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
@@ -25,7 +25,7 @@ BuildRequires: libspectre-devel
 BuildRequires: nautilus-devel
 BuildRequires: libtiff-devel
 BuildRequires: libxslt-proc
-BuildRequires: gobject-introspection-devel
+#BuildRequires: gobject-introspection-devel
 BuildRequires: glib2-devel >= 2.25.3
 #BuildRequires: t1lib-devel
 %if %build_dvi
@@ -76,7 +76,8 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %if %build_dvi
  --enable-dvi \
 %endif
---enable-introspection --enable-gtk-doc
+ --enable-gtk-doc
+#--enable-introspection 
 #--enable-t1lib 
 
 %make  GLIB_COMPILE_SCHEMAS=/usr/bin/glib-compile-schemas
@@ -173,8 +174,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %_libdir/libevdocument.so.%{major}*
 %_libdir/libevview.so.%{major}*
-%_libdir/girepository-1.0/EvinceDocument-%api.typelib
-%_libdir/girepository-1.0/EvinceView-%api.typelib
+#%_libdir/girepository-1.0/EvinceDocument-%api.typelib
+#%_libdir/girepository-1.0/EvinceView-%api.typelib
 
 %files -n %develname
 %defattr(-,root,root,-)
@@ -187,6 +188,6 @@ rm -rf $RPM_BUILD_ROOT
 %_libdir/*.la
 %_libdir/pkgconfig/evince*pc
 %_includedir/evince*
-%_datadir/gir-1.0/EvinceDocument-%api.gir
-%_datadir/gir-1.0/EvinceView-%api.gir
+#%_datadir/gir-1.0/EvinceDocument-%api.gir
+#%_datadir/gir-1.0/EvinceView-%api.gir
 
