@@ -8,11 +8,12 @@
 Summary: GNOME Document viewer
 Name:    evince
 Version: 2.32.0
-Release: %mkrel 2
+Release: %mkrel 3
 License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.bz2
+Patch0: evince-2.24.0-CVE-2010-2640,2641,2642,2643.diff
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: ghostscript ghostscript-module-X
 BuildRequires: libGConf2-devel >= 2.31.2
