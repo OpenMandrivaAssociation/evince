@@ -26,6 +26,7 @@ BuildRequires: libspectre-devel
 BuildRequires: nautilus-devel
 BuildRequires: libtiff-devel
 BuildRequires: libxslt-proc
+BuildRequires: gnome-icon-theme
 #BuildRequires: gobject-introspection-devel
 BuildRequires: glib2-devel >= 2.25.3
 #BuildRequires: t1lib-devel
