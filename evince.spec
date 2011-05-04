@@ -1,4 +1,4 @@
-%define build_dvi 1
+%define build_dvi 0
 %define build_impress 1
 %define major 3
 %define api 2.32
@@ -30,7 +30,7 @@ BuildRequires: libxslt-proc
 BuildRequires: glib2-devel >= 2.25.3
 #BuildRequires: t1lib-devel
 %if %build_dvi
-BuildRequires: tetex-devel >= tetex-devel-3.0-22mdv
+BuildRequires: tetex-devel >= 3.0-22mdv
 #gw just like xdvi, needed for rendering the fonts
 Suggests: tetex
 %endif
@@ -159,7 +159,9 @@ rm -rf $RPM_BUILD_ROOT
 %_libdir/evince/%major/backends/lib*
 %_libdir/evince/%major/backends/comicsdocument.evince-backend
 %_libdir/evince/%major/backends/djvudocument.evince-backend
+%if %build_dvi
 %_libdir/evince/%major/backends/dvidocument.evince-backend
+%endif
 %if %build_impress
 %_libdir/evince/%major/backends/impressdocument.evince-backend
 %endif
