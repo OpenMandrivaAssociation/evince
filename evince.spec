@@ -27,7 +27,7 @@ BuildRequires: nautilus-devel
 BuildRequires: libtiff-devel
 BuildRequires: libxslt-proc
 BuildRequires: gnome-icon-theme
-#BuildRequires: gobject-introspection-devel
+BuildRequires: gobject-introspection-devel
 BuildRequires: glib2-devel >= 2.25.3
 #BuildRequires: t1lib-devel
 %if %build_dvi
@@ -71,34 +71,32 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %apply_patches
 
 %build
-%configure2_5x --enable-tiff --enable-djvu --enable-pixbuf --enable-comics \
+%configure2_5x --enable-tiff --enable-djvu --enable-pixbuf --enable-comics --disable-static \
+ --disable-schemas-compile --disable-schemas-install --disable-scrollkeeper \
 %if %build_impress
  --enable-impress \
 %endif
 %if %build_dvi
  --enable-dvi \
 %endif
- --enable-gtk-doc
-#--enable-introspection 
+ --enable-gtk-doc \
+ --enable-introspection 
 #--enable-t1lib 
 
-%make  GLIB_COMPILE_SCHEMAS=/usr/bin/glib-compile-schemas
+%make
 
 %install
 rm -rf $RPM_BUILD_ROOT %name.lang
 
-GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1 %makeinstall_std _ENABLE_SK=no   GLIB_COMPILE_SCHEMAS=/usr/bin/glib-compile-schemas
+%makeinstall_std
 
-%find_lang Evince --with-gnome
-%find_lang %name --with-gnome
-cat %name.lang >> Evince.lang
+%find_lang %name
 for omf in %buildroot%_datadir/omf/*/{*-??,*-??_??}.omf;do
-echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed s!%buildroot!!)" >> Evince.lang
+echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed s!%buildroot!!)" >> %name.lang
 done
 
-rm -f %buildroot%_libdir/nautilus/extensions-*/libevince*a \
-      %buildroot%_libdir/evince/*/backends/lib*a %buildroot%_libdir/lib*.a \
-      %buildroot%_datadir/glib-2.0/schemas/gschemas.compiled
+rm -f %buildroot%_libdir/nautilus/extensions-*/libevince*.la \
+      %buildroot%_libdir/evince/*/backends/lib*.la
 
 
 %post
@@ -134,7 +132,7 @@ rm -f %buildroot%_libdir/nautilus/extensions-*/libevince*a \
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files -f Evince.lang
+%files -f %name.lang
 %defattr(-,root,root,-)
 %doc NEWS AUTHORS TODO
 # README
@@ -178,8 +176,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %_libdir/libevdocument.so.%{major}*
 %_libdir/libevview.so.%{major}*
-#%_libdir/girepository-1.0/EvinceDocument-%api.typelib
-#%_libdir/girepository-1.0/EvinceView-%api.typelib
+%{_libdir}/girepository-1.0/*.typelib
 
 %files -n %develname
 %defattr(-,root,root,-)
@@ -192,6 +189,4 @@ rm -rf $RPM_BUILD_ROOT
 %_libdir/*.la
 %_libdir/pkgconfig/evince*pc
 %_includedir/evince*
-#%_datadir/gir-1.0/EvinceDocument-%api.gir
-#%_datadir/gir-1.0/EvinceView-%api.gir
-
+%{_datadir}/gir-1.0/*.gir
