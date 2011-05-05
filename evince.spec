@@ -8,7 +8,7 @@
 Summary: GNOME Document viewer
 Name:    evince
 Version: 2.32.0
-Release: %mkrel 4
+Release: %mkrel 5
 License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
@@ -31,9 +31,9 @@ BuildRequires: gnome-icon-theme
 BuildRequires: glib2-devel >= 2.25.3
 #BuildRequires: t1lib-devel
 %if %build_dvi
-BuildRequires: tetex-devel >= 3.0-22mdv
+BuildRequires: kpathsea-devel
 #gw just like xdvi, needed for rendering the fonts
-Suggests: tetex
+Suggests: texlive
 %endif
 BuildRequires: djvulibre-devel >= 3.5.17
 BuildRequires: libgcrypt-devel
