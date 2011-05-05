@@ -1,4 +1,4 @@
-%define build_dvi 0
+%define build_dvi 1
 %define build_impress 1
 %define major 3
 %define api 2.32
