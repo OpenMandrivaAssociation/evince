@@ -90,7 +90,7 @@ rm -rf $RPM_BUILD_ROOT %name.lang
 
 %makeinstall_std
 
-%find_lang %name
+%find_lang %name --with-gnome
 for omf in %buildroot%_datadir/omf/*/{*-??,*-??_??}.omf;do
 echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed s!%buildroot!!)" >> %name.lang
 done
