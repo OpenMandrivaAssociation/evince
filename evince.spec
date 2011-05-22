@@ -17,6 +17,7 @@ Patch0: evince-2.24.0-CVE-2010-2640,2641,2642,2643.diff
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Requires: ghostscript ghostscript-module-X
 BuildRequires: libGConf2-devel >= 2.31.2
+BuildRequires: GConf2
 BuildRequires: gtk+2-devel
 BuildRequires: libgail-devel
 BuildRequires: libgnome-keyring-devel
