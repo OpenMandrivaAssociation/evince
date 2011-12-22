@@ -45,6 +45,7 @@ BuildRequires: intltool
 BuildRequires: gnome-doc-utils
 BuildRequires: gnome-common
 BuildRequires: gtk-doc
+BuildRequires: glib2.0-common
 Requires(post): scrollkeeper desktop-file-utils
 Requires(postun): scrollkeeper desktop-file-utils
 
