@@ -74,7 +74,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %apply_patches
 
 %build
-%configure2_5x \
+%configure \
 	--enable-tiff \
 	--enable-djvu \
 	--enable-pixbuf \
