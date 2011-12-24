@@ -1,3 +1,5 @@
+%define _disable_ld_no_undefined 1
+
 %define build_dvi 1
 %define build_impress 1
 %define major 3
@@ -51,20 +53,20 @@ Requires(post,postun): desktop-file-utils
 %description
 Evince is the GNOME Document viewer. Its supports PDF, PostScript and other formats.
 
-%package -n %libname
+%package -n %{libname}
 Group:System/Libraries
 Summary: GNOME Document viewer library
 
-%description -n %libname
+%description -n %{libname}
 This is the GNOME Document viewer library, the shared parts of evince.
 
-%package -n %develname
+%package -n %{develname}
 Group:Development/C
 Summary: GNOME Document viewer library
-Requires: %libname = %version
-Provides: libevince-devel = %version-%release
+Requires: %{libname} = %{version}
+Provides: evince-devel = %{version}-%{release}
 
-%description -n %develname
+%description -n %{develname}
 This is the GNOME Document viewer library, the shared parts of evince.
 
 %prep
@@ -94,77 +96,72 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %make
 
 %install
-rm -rf %{buildroot} %name.lang
-
+rm -rf %{buildroot} %{name}.lang
 %makeinstall_std
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
-%find_lang %name --with-gnome
-for omf in %buildroot%_datadir/omf/*/{*-??,*-??_??}.omf;do
-echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed s!%buildroot!!)" >> %name.lang
+%find_lang %{name} --with-gnome
+for omf in %{buildroot}%{_datadir}/omf/*/{*-??,*-??_??}.omf;do
+echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed s!%{buildroot}!!)" >> %{name}.lang
 done
 
-rm -f %buildroot%_libdir/nautilus/extensions-*/libevince*.la \
-      %buildroot%_libdir/evince/*/backends/lib*.la
-
-
 %post
-%define schemas %name-thumbnailer %name-thumbnailer-djvu %{?build_dvi:%name-thumbnailer-dvi} evince-thumbnailer-comics evince-thumbnailer-ps
+%define schemas %{name}-thumbnailer %{name}-thumbnailer-djvu %{?build_dvi:%{name}-thumbnailer-dvi} evince-thumbnailer-comics evince-thumbnailer-ps
 
 %preun
 %preun_uninstall_gconf_schemas %schemas
 
-%files -f %name.lang
+%files -f %{name}.lang
 %doc NEWS AUTHORS TODO
 # README
-%_sysconfdir/gconf/schemas/%name-thumbnailer.schemas
-%_sysconfdir/gconf/schemas/%name-thumbnailer-djvu.schemas
-%_sysconfdir/gconf/schemas/%name-thumbnailer-comics.schemas
+%{_sysconfdir}/gconf/schemas/%{name}-thumbnailer.schemas
+%{_sysconfdir}/gconf/schemas/%{name}-thumbnailer-djvu.schemas
+%{_sysconfdir}/gconf/schemas/%{name}-thumbnailer-comics.schemas
 %if %build_dvi
-%_sysconfdir/gconf/schemas/%name-thumbnailer-dvi.schemas
+%{_sysconfdir}/gconf/schemas/%{name}-thumbnailer-dvi.schemas
 %endif
-%_sysconfdir/gconf/schemas/%name-thumbnailer-ps.schemas
+%{_sysconfdir}/gconf/schemas/%{name}-thumbnailer-ps.schemas
 %{_bindir}/*
 %{_datadir}/evince
 %{_datadir}/applications/*
-%_datadir/icons/hicolor/*/apps/evince*
-%_datadir/glib-2.0/schemas/org.gnome.Evince.gschema.xml
-%_datadir/GConf/gsettings/evince.convert
-%dir %_datadir/omf/%name
-%_datadir/omf/%name/%name-C.omf
-%_mandir/man1/evince.1*
-%_libdir/nautilus/extensions-2.0/libevince*so*
-%dir %_libdir/evince/%major/
-%dir %_libdir/evince/%major/backends
-%_libdir/evince/%major/backends/lib*
-%_libdir/evince/%major/backends/comicsdocument.evince-backend
-%_libdir/evince/%major/backends/djvudocument.evince-backend
+%{_datadir}/icons/hicolor/*/apps/evince*
+%{_datadir}/glib-2.0/schemas/org.gnome.Evince.gschema.xml
+%{_datadir}/GConf/gsettings/evince.convert
+%dir %{_datadir}/omf/%{name}
+%{_datadir}/omf/%{name}/%{name}-C.omf
+%{_mandir}/man1/evince.1*
+%{_libdir}/nautilus/extensions-2.0/libevince*so*
+%dir %{_libdir}/evince/%major/
+%dir %{_libdir}/evince/%major/backends
+%{_libdir}/evince/%major/backends/lib*
+%{_libdir}/evince/%major/backends/comicsdocument.evince-backend
+%{_libdir}/evince/%major/backends/djvudocument.evince-backend
 %if %build_dvi
-%_libdir/evince/%major/backends/dvidocument.evince-backend
+%{_libdir}/evince/%major/backends/dvidocument.evince-backend
 %endif
 %if %build_impress
-%_libdir/evince/%major/backends/impressdocument.evince-backend
+%{_libdir}/evince/%major/backends/impressdocument.evince-backend
 %endif
-%_libdir/evince/%major/backends/pdfdocument.evince-backend
-%_libdir/evince/%major/backends/pixbufdocument.evince-backend
-%_libdir/evince/%major/backends/psdocument.evince-backend
-%_libdir/evince/%major/backends/tiffdocument.evince-backend
+%{_libdir}/evince/%major/backends/pdfdocument.evince-backend
+%{_libdir}/evince/%major/backends/pixbufdocument.evince-backend
+%{_libdir}/evince/%major/backends/psdocument.evince-backend
+%{_libdir}/evince/%major/backends/tiffdocument.evince-backend
 %_libexecdir/evince-convert-metadata
 %_libexecdir/evinced
-%_datadir/dbus-1/services/org.gnome.evince.Daemon.service
+%{_datadir}/dbus-1/services/org.gnome.evince.Daemon.service
 
-%files -n %libname
-%_libdir/libevdocument.so.%{major}*
-%_libdir/libevview.so.%{major}*
+%files -n %{libname}
+%{_libdir}/libevdocument.so.%{major}*
+%{_libdir}/libevview.so.%{major}*
 %{_libdir}/girepository-1.0/*.typelib
 
-%files -n %develname
+%files -n %{develname}
 %doc ChangeLog
-%_datadir/gtk-doc/html/evince
-%_datadir/gtk-doc/html/libevdocument-%api
-%_datadir/gtk-doc/html/libevview-%api
-%_libdir/libevdocument.so
-%_libdir/libevview.so
-%_libdir/pkgconfig/evince*pc
-%_includedir/evince*
+%{_datadir}/gtk-doc/html/evince
+%{_datadir}/gtk-doc/html/libevdocument-%api
+%{_datadir}/gtk-doc/html/libevview-%api
+%{_libdir}/libevdocument.so
+%{_libdir}/libevview.so
+%{_libdir}/pkgconfig/evince*pc
+%{_includedir}/evince*
 %{_datadir}/gir-1.0/*.gir
