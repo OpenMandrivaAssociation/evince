@@ -1,11 +1,12 @@
 %define _disable_ld_no_undefined 1
 
-%define build_dvi 1
-%define build_impress 1
 %define major 3
 %define api 2.32
-%define libname %mklibname evince %major
+%define libname %mklibname evince %{major}
 %define develname %mklibname -d evince
+
+%define build_dvi 1
+%define build_impress 1
 
 Summary: GNOME Document viewer
 Name:    evince
@@ -74,7 +75,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %apply_patches
 
 %build
-%configure \
+%configure2_5x \
 	--enable-tiff \
 	--enable-djvu \
 	--enable-pixbuf \
@@ -93,7 +94,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 	--enable-introspection 
 #	--enable-t1lib 
 
-%make
+%make LIBS='-lgmodule-2.0'
 
 %install
 rm -rf %{buildroot} %{name}.lang
@@ -130,22 +131,22 @@ done
 %dir %{_datadir}/omf/%{name}
 %{_datadir}/omf/%{name}/%{name}-C.omf
 %{_mandir}/man1/evince.1*
-%{_libdir}/nautilus/extensions-2.0/libevince*so*
-%dir %{_libdir}/evince/%major/
-%dir %{_libdir}/evince/%major/backends
-%{_libdir}/evince/%major/backends/lib*
-%{_libdir}/evince/%major/backends/comicsdocument.evince-backend
-%{_libdir}/evince/%major/backends/djvudocument.evince-backend
+%{_libdir}/nautilus/extensions-3.0/libevince*so*
+%dir %{_libdir}/evince/%{major}/
+%dir %{_libdir}/evince/%{major}/backends
+%{_libdir}/evince/%{major}/backends/lib*
+%{_libdir}/evince/%{major}/backends/comicsdocument.evince-backend
+%{_libdir}/evince/%{major}/backends/djvudocument.evince-backend
 %if %build_dvi
-%{_libdir}/evince/%major/backends/dvidocument.evince-backend
+%{_libdir}/evince/%{major}/backends/dvidocument.evince-backend
 %endif
 %if %build_impress
-%{_libdir}/evince/%major/backends/impressdocument.evince-backend
+%{_libdir}/evince/%{major}/backends/impressdocument.evince-backend
 %endif
-%{_libdir}/evince/%major/backends/pdfdocument.evince-backend
-%{_libdir}/evince/%major/backends/pixbufdocument.evince-backend
-%{_libdir}/evince/%major/backends/psdocument.evince-backend
-%{_libdir}/evince/%major/backends/tiffdocument.evince-backend
+%{_libdir}/evince/%{major}/backends/pdfdocument.evince-backend
+%{_libdir}/evince/%{major}/backends/pixbufdocument.evince-backend
+%{_libdir}/evince/%{major}/backends/psdocument.evince-backend
+%{_libdir}/evince/%{major}/backends/tiffdocument.evince-backend
 %_libexecdir/evince-convert-metadata
 %_libexecdir/evinced
 %{_datadir}/dbus-1/services/org.gnome.evince.Daemon.service
