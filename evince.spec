@@ -20,8 +20,7 @@ URL:     http://www.gnome.org
 Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
 
 BuildRequires:	ghostscript
-#gw if we run autoconf
-#BuildRequires:	gnome-doc-utils
+BuildRequires:	gnome-doc-utils
 BuildRequires:	gnome-icon-theme
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
@@ -40,8 +39,7 @@ BuildRequires:	pkgconfig(gthread-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0.2
 BuildRequires:	pkgconfig(gtk+-unix-print-3.0) >= 3.0.2
 BuildRequires:	pkgconfig(gtk+-x11-3.0)
-#BuildRequires:	pkgconfig(ice)
-BuildRequires:	libice-devel
+BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(libgxps) >= 0.2.0
 BuildRequires:	pkgconfig(libnautilus-extension) >= 2.91.4
 BuildRequires:	pkgconfig(libspectre) >= 0.2.0
@@ -51,15 +49,8 @@ BuildRequires:	pkgconfig(sm) >= 1.0.0
 BuildRequires:	pkgconfig(x11)
 Requires: ghostscript
 Requires: ghostscript-module-X
-#BuildRequires: libgcrypt-devel
-#BuildRequires: ghostscript
 Requires(post,postun): desktop-file-utils
 
-#BuildRequires: libGConf2-devel >= 2.31.2
-#BuildRequires: GConf2
-#BuildRequires: glib2.0-common
-#BuildRequires: libxslt-proc
-#BuildRequires: t1lib-devel
 %if %build_dvi
 BuildRequires: kpathsea-devel
 #gw just like xdvi, needed for rendering the fonts
