@@ -12,12 +12,12 @@
 
 Summary: GNOME Document viewer
 Name:    evince
-Version: 3.2.1
+Version: 3.4.0
 Release: 1
 License: GPLv2+ and GFDL+
 Group:   Graphical desktop/GNOME
 URL:     http://www.gnome.org
-Source0: ftp://ftp.gnome.org/pub/GNOME/sources/%{name}/%{name}-%{version}.tar.xz
+Source0: ftp://ftp.gnome.org/pub/GNOME/sources/evince/3.4/%{name}-%{version}.tar.xz
 
 BuildRequires:	ghostscript
 BuildRequires:	gnome-doc-utils
@@ -78,7 +78,6 @@ This is the shared evview library for %{name}.
 %package -n %{girname}
 Summary: GObject Introspection interface description for %{name}
 Group: System/Libraries
-Requires: %{libevview} = %{version}-%{release}
 
 %description -n %{girname}
 GObject Introspection interface description for %{name}.
@@ -88,6 +87,7 @@ Group:Development/C
 Summary: GNOME Document viewer library
 Requires: %{libevdocument} = %{version}
 Requires: %{libevview} = %{version}
+Requires: %{girname} = %{version}
 Provides: evince-devel = %{version}-%{release}
 
 %description -n %{develname}
@@ -114,7 +114,6 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %make LIBS='-lgmodule-2.0'
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 
