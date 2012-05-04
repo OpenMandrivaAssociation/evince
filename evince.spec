@@ -1,6 +1,6 @@
 %define _disable_ld_no_undefined 1
 
-%define major 3
+%define major 4
 %define api 3.0
 %define gir_major 3.0
 %define libevdocument %mklibname evdocument 3 %{major}
@@ -98,7 +98,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %apply_patches
 
 %build
-%configure \
+%configure2_5x \
 	--disable-static \
 	--enable-tiff \
 	--enable-djvu \
