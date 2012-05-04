@@ -54,8 +54,10 @@ Requires:	ghostscript
 Requires:	ghostscript-module-X
 
 %description
-Evince is the GNOME Document viewer. It supports PDF, PostScript and other formats.
-To view .dvi files as produced by TeX in evince, install the %{name}-dvi package.
+Evince is the GNOME Document viewer.
+It supports PDF, PostScript and other formats.
+To view .dvi files as produced by TeX in evince,
+install the %{name}-dvi package.
 
 %if %build_dvi
 %package dvi
@@ -68,8 +70,10 @@ Requires:	texlive-texmf
 Requires:	%{name} = %{version}-%{release}
 
 %description dvi
-This package adds support for displaying .dvi files to evince. These files are 
-produced by TeX, often using a macro package like LaTeX.
+This package adds support for displaying .dvi files to evince.
+These files are 
+produced by TeX, often using
+a macro package like LaTeX.
 %endif
 
 %package -n %{libname_evdocument}
