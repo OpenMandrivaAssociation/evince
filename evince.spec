@@ -14,7 +14,7 @@
 Summary:	GNOME Document viewer
 Name:		evince
 Version:	3.6.1
-Release:	1
+Release:	2
 License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
 URL:		http://www.gnome.org
@@ -187,3 +187,6 @@ find %{buildroot} -name *.la -delete
 %{_datadir}/gir-1.0/EvinceDocument-%{gmajor}.gir
 %{_datadir}/gir-1.0/EvinceView-%{gmajor}.gir
 
+%changelog
+* Fri Feb  8 2013 pcpa <paulo.cesar.pereira.de.andrade@gmail.com> - 3.6.1-2
+- Rebuild to link to current libraries and correct unresolved symbols problem.
