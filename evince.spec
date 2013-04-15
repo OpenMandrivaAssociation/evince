@@ -17,7 +17,7 @@ Version:	3.6.1
 Release:	2
 License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
-URL:		http://www.gnome.org
+Url:		http://www.gnome.org
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	ghostscript
@@ -131,8 +131,6 @@ This is the GNOME Document viewer library, the shared parts of evince.
 
 %find_lang %{name} --with-gnome
 
-find %{buildroot} -name *.la -delete
-
 %files -f %{name}.lang
 %doc NEWS AUTHORS TODO
 %{_bindir}/*
@@ -187,6 +185,3 @@ find %{buildroot} -name *.la -delete
 %{_datadir}/gir-1.0/EvinceDocument-%{gmajor}.gir
 %{_datadir}/gir-1.0/EvinceView-%{gmajor}.gir
 
-%changelog
-* Fri Feb  8 2013 pcpa <paulo.cesar.pereira.de.andrade@gmail.com> - 3.6.1-2
-- Rebuild to link to current libraries and correct unresolved symbols problem.
