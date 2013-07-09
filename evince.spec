@@ -49,6 +49,7 @@ BuildRequires:	pkgconfig(libxml-2.0) >= 2.5.0
 BuildRequires:	pkgconfig(poppler-glib) >= 0.18.0
 BuildRequires:	pkgconfig(sm) >= 1.0.0
 BuildRequires:	pkgconfig(x11)
+BuildRequires:	pkgconfig(libsecret-1)
 Requires:	ghostscript
 Requires:	ghostscript-module-X
 
