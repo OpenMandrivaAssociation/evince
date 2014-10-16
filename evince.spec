@@ -13,8 +13,8 @@
 
 Summary:	GNOME Document viewer
 Name:		evince
-Version:	3.8.3
-Release:	7
+Version:	3.14.1
+Release:	1
 License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org
@@ -33,7 +33,7 @@ BuildRequires:	pkgconfig(ddjvuapi) >= 3.5.17
 BuildRequires:	pkgconfig(gail-3.0) >= 3.0.2
 BuildRequires:	pkgconfig(gio-2.0) >= 2.31.0
 BuildRequires:	pkgconfig(gnome-doc-utils)
-BuildRequires:	pkgconfig(gnome-icon-theme) >= 2.17.1
+BuildRequires:	pkgconfig(adwaita-icon-theme) >= 2.17.1
 BuildRequires:	pkgconfig(gnome-keyring-1) >= 2.22.0
 BuildRequires:	pkgconfig(gobject-introspection-1.0) >= 0.6
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
@@ -112,7 +112,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %apply_patches
 
 %build
-%configure2_5x \
+%configure \
 	--enable-tiff \
 	--enable-djvu \
 	--enable-comics \
@@ -121,9 +121,8 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %endif
 	--enable-gtk-doc=no \
 	--enable-introspection \
-	--disable-static \
-	--disable-scrollkeeper \
-	--disable-schemas-compile
+	--disable-schemas-compile \
+	--enable-compile-warnings=no
 
 %make
 
@@ -156,9 +155,12 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_libdir}/evince/%{major}/backends/tiffdocument.evince-backend
 %{_libdir}/evince/%{major}/backends/libxpsdocument.so
 %{_libdir}/evince/%{major}/backends/xpsdocument.evince-backend
+%{_libdir}/mozilla/plugins/*.so
 %{_libexecdir}/evinced
 %{_datadir}/dbus-1/services/org.gnome.evince.Daemon.service
 %{_datadir}/thumbnailers/evince.thumbnailer
+%{_datadir}/appdata/%{name}*.metainfo.xml
+%{_datadir}/appdata/%{name}*.appdata.xml
 
 %if %{build_dvi}
 %files dvi
