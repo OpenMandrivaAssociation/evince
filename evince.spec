@@ -13,7 +13,7 @@
 
 Summary:	GNOME Document viewer
 Name:		evince
-Version:	3.14.1
+Version:	 3.17.1
 Release:	2
 License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
@@ -69,7 +69,7 @@ Requires:	%{name} = %{version}-%{release}
 
 %description dvi
 This package adds support for displaying .dvi files to evince.
-These files are 
+These files are
 produced by TeX, often using
 a macro package like LaTeX.
 %endif
