@@ -1,4 +1,5 @@
 %define url_ver	%(echo %{version}|cut -d. -f1,2)
+%define _disable_rebuild_configure 1
 
 %define build_dvi	1
 %define major	4
@@ -13,8 +14,8 @@
 
 Summary:	GNOME Document viewer
 Name:		evince
-Version:	 3.17.1
-Release:	4
+Version:	3.18.0
+Release:	1
 License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org
