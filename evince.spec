@@ -11,11 +11,12 @@
 %define libevview	%mklibname evview %{api} %{major_evview}
 %define girname	%mklibname %{name}-gir %{gmajor}
 %define devname	%mklibname -d %{name}
+%define _userunitdir /usr/lib/systemd/user/
 
 Summary:	GNOME Document viewer
 Name:		evince
-Version:	3.18.2
-Release:	2
+Version:	3.28.3
+Release:	1
 License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org
@@ -150,8 +151,8 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_libdir}/evince/%{major}/backends/djvudocument.evince-backend
 %{_libdir}/evince/%{major}/backends/libpdfdocument.so
 %{_libdir}/evince/%{major}/backends/pdfdocument.evince-backend
-%{_libdir}/evince/%{major}/backends/libpsdocument.so
-%{_libdir}/evince/%{major}/backends/psdocument.evince-backend
+#{_libdir}/evince/%{major}/backends/libpsdocument.so
+#{_libdir}/evince/%{major}/backends/psdocument.evince-backend
 %{_libdir}/evince/%{major}/backends/libtiffdocument.so
 %{_libdir}/evince/%{major}/backends/tiffdocument.evince-backend
 %{_libdir}/evince/%{major}/backends/libxpsdocument.so
@@ -160,8 +161,9 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_libexecdir}/evinced
 %{_datadir}/dbus-1/services/org.gnome.evince.Daemon.service
 %{_datadir}/thumbnailers/evince.thumbnailer
-%{_datadir}/appdata/%{name}*.metainfo.xml
-%{_datadir}/appdata/%{name}*.appdata.xml
+%{_datadir}/metainfo/%{name}*.appdata.xml
+%{_datadir}/metainfo/%{name}*.metainfo.xml
+%{_userunitdir}/evince.service
 
 %if %{build_dvi}
 %files dvi
