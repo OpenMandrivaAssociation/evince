@@ -11,6 +11,7 @@
 %define libevview	%mklibname evview %{api} %{major_evview}
 %define girname	%mklibname %{name}-gir %{gmajor}
 %define devname	%mklibname -d %{name}
+%define _userunitdir /usr/lib/systemd/user/
 
 Summary:	GNOME Document viewer
 Name:		evince
@@ -160,8 +161,9 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_libexecdir}/evinced
 %{_datadir}/dbus-1/services/org.gnome.evince.Daemon.service
 %{_datadir}/thumbnailers/evince.thumbnailer
-#{_datadir}/appdata/%{name}*.metainfo.xml
-#{_datadir}/appdata/%{name}*.appdata.xml
+%{_datadir}/metainfo/%{name}*.appdata.xml
+%{_datadir}/metainfo/%{name}*.metainfo.xml
+%{_userunitdir}/evince.service
 
 %if %{build_dvi}
 %files dvi
