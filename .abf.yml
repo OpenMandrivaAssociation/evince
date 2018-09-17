@@ -3,5 +3,6 @@ removed_sources:
   evince-3.17.1.tar.xz: 53e5b3071e9017adbf9a4e70132f812e515c0e64
   evince-3.18.0.tar.xz: b7b5b472d2165d83f3326dfce05d7d3f2e12e0cc
   evince-3.8.3.tar.xz: cc31bf06309634fa7b651811f9b94a549547712c
-sources:
   evince-3.18.2.tar.xz: 2e120d9792b448f0fad4a9285cb3346a2cbc1098
+sources:
+  evince-3.28.3.tar.xz: 09f25cec1340dc85426d21110ccf38b660848397
