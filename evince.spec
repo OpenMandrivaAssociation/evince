@@ -150,8 +150,8 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_libdir}/evince/%{major}/backends/djvudocument.evince-backend
 %{_libdir}/evince/%{major}/backends/libpdfdocument.so
 %{_libdir}/evince/%{major}/backends/pdfdocument.evince-backend
-%{_libdir}/evince/%{major}/backends/libpsdocument.so
-%{_libdir}/evince/%{major}/backends/psdocument.evince-backend
+#{_libdir}/evince/%{major}/backends/libpsdocument.so
+#{_libdir}/evince/%{major}/backends/psdocument.evince-backend
 %{_libdir}/evince/%{major}/backends/libtiffdocument.so
 %{_libdir}/evince/%{major}/backends/tiffdocument.evince-backend
 %{_libdir}/evince/%{major}/backends/libxpsdocument.so
@@ -160,8 +160,8 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_libexecdir}/evinced
 %{_datadir}/dbus-1/services/org.gnome.evince.Daemon.service
 %{_datadir}/thumbnailers/evince.thumbnailer
-%{_datadir}/appdata/%{name}*.metainfo.xml
-%{_datadir}/appdata/%{name}*.appdata.xml
+#{_datadir}/appdata/%{name}*.metainfo.xml
+#{_datadir}/appdata/%{name}*.appdata.xml
 
 %if %{build_dvi}
 %files dvi
