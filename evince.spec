@@ -172,7 +172,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_datadir}/thumbnailers/evince.thumbnailer
 %{_datadir}/metainfo/org.gnome.Evince.appdata.xml
 %{_datadir}/metainfo/%{name}*.metainfo.xml
-#{_userunitdir}/evince.service
+%{_userunitdir}/org.gnome.Evince.service
 
 %if %{build_dvi}
 %files dvi
