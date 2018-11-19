@@ -55,6 +55,10 @@ BuildRequires:	pkgconfig(poppler-glib) >= 0.18.0
 BuildRequires:	pkgconfig(sm) >= 1.0.0
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(libsecret-1)
+BuildRequires:	pkgconfig(gstreamer-1.0)
+BuildRequires:	pkgconfig(gstreamer-base-1.0)
+BuildRequires:	pkgconfig(gstreamer-video-1.0)
+
 Requires:	ghostscript
 Requires:	ghostscript-module-X
 
