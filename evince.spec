@@ -35,6 +35,7 @@ BuildRequires:	pkgconfig(ddjvuapi) >= 3.5.17
 BuildRequires:	pkgconfig(gail-3.0) >= 3.0.2
 BuildRequires:	pkgconfig(gio-2.0) >= 2.31.0
 BuildRequires:	pkgconfig(gnome-doc-utils)
+BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:	pkgconfig(adwaita-icon-theme) >= 2.17.1
 BuildRequires:	pkgconfig(gnome-keyring-1) >= 2.22.0
 BuildRequires:  pkgconfig(gnome-desktop-3.0)
@@ -120,6 +121,8 @@ This is the GNOME Document viewer library, the shared parts of evince.
 	--enable-tiff \
 	--enable-djvu \
 	--enable-comics \
+	--enable-gnome-desktop \
+	--enable-multimedia \
 %if %{build_dvi}
 	--enable-dvi \
 %endif
