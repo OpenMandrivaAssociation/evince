@@ -15,8 +15,8 @@
 
 Summary:	GNOME Document viewer
 Name:		evince
-Version:	3.28.3
-Release:	2
+Version:	3.30.1
+Release:	1
 License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org
@@ -35,8 +35,11 @@ BuildRequires:	pkgconfig(ddjvuapi) >= 3.5.17
 BuildRequires:	pkgconfig(gail-3.0) >= 3.0.2
 BuildRequires:	pkgconfig(gio-2.0) >= 2.31.0
 BuildRequires:	pkgconfig(gnome-doc-utils)
+BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:	pkgconfig(adwaita-icon-theme) >= 2.17.1
 BuildRequires:	pkgconfig(gnome-keyring-1) >= 2.22.0
+BuildRequires:  pkgconfig(gnome-desktop-3.0)
+BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0) >= 0.6
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
 BuildRequires:	pkgconfig(gthread-2.0)
@@ -52,6 +55,10 @@ BuildRequires:	pkgconfig(poppler-glib) >= 0.18.0
 BuildRequires:	pkgconfig(sm) >= 1.0.0
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(libsecret-1)
+BuildRequires:	pkgconfig(gstreamer-1.0)
+BuildRequires:	pkgconfig(gstreamer-base-1.0)
+BuildRequires:	pkgconfig(gstreamer-video-1.0)
+
 Requires:	ghostscript
 Requires:	ghostscript-module-X
 
@@ -118,6 +125,8 @@ This is the GNOME Document viewer library, the shared parts of evince.
 	--enable-tiff \
 	--enable-djvu \
 	--enable-comics \
+	--enable-gnome-desktop \
+	--enable-multimedia \
 %if %{build_dvi}
 	--enable-dvi \
 %endif
@@ -138,7 +147,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_bindir}/*
 %{_datadir}/evince
 %{_datadir}/applications/*
-%{_datadir}/icons/hicolor/*/apps/evince*
+%{_datadir}/icons/hicolor/*/apps/org.gnome.Evinc*
 %{_datadir}/glib-2.0/schemas/org.gnome.Evince.gschema.xml
 %{_datadir}/GConf/gsettings/evince.convert
 %{_mandir}/man1/evince.1*
@@ -157,13 +166,13 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_libdir}/evince/%{major}/backends/tiffdocument.evince-backend
 %{_libdir}/evince/%{major}/backends/libxpsdocument.so
 %{_libdir}/evince/%{major}/backends/xpsdocument.evince-backend
-%{_libdir}/mozilla/plugins/*.so
+#{_libdir}/mozilla/plugins/*.so
 %{_libexecdir}/evinced
 %{_datadir}/dbus-1/services/org.gnome.evince.Daemon.service
 %{_datadir}/thumbnailers/evince.thumbnailer
-%{_datadir}/metainfo/%{name}*.appdata.xml
+%{_datadir}/metainfo/org.gnome.Evince.appdata.xml
 %{_datadir}/metainfo/%{name}*.metainfo.xml
-%{_userunitdir}/evince.service
+%{_userunitdir}/org.gnome.Evince.service
 
 %if %{build_dvi}
 %files dvi
