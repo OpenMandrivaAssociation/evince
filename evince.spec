@@ -15,13 +15,14 @@
 
 Summary:	GNOME Document viewer
 Name:		evince
-Version:	3.30.2
+Version:	3.32.0
 Release:	1
 License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 
+BuildRequires:	pkgconfig(appstream-glib)
 BuildRequires:	ghostscript
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
@@ -58,6 +59,10 @@ BuildRequires:	pkgconfig(libsecret-1)
 BuildRequires:	pkgconfig(gstreamer-1.0)
 BuildRequires:	pkgconfig(gstreamer-base-1.0)
 BuildRequires:	pkgconfig(gstreamer-video-1.0)
+BuildRequires:	pkgconfig(synctex)
+BuildRequires:	gnome-common
+BuildRequires:	yelp-tools
+BuildRequires:	gettext-devel
 
 Requires:	ghostscript
 Requires:	ghostscript-module-X
@@ -121,6 +126,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %apply_patches
 
 %build
+autoreconf -vfi
 %configure \
 	--enable-tiff \
 	--enable-djvu \
