@@ -123,7 +123,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 
 %prep
 %setup -q
-%apply_patches
+%autopatch -p1
 
 %build
 autoreconf -vfi
