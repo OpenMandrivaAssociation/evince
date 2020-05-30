@@ -22,6 +22,7 @@ Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 
+BuildRequires:	meson
 BuildRequires:	pkgconfig(appstream-glib)
 BuildRequires:	ghostscript
 BuildRequires:	gtk-doc
@@ -126,25 +127,12 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %autopatch -p1
 
 %build
-autoreconf -vfi
-%configure \
-	--enable-tiff \
-	--enable-djvu \
-	--enable-comics \
-	--enable-gnome-desktop \
-	--enable-multimedia \
-%if %{build_dvi}
-	--enable-dvi \
-%endif
-	--enable-gtk-doc=no \
-	--enable-introspection \
-	--disable-schemas-compile \
-	--enable-compile-warnings=no
 
-%make
-
+%meson
+%meson_build
+	
 %install
-%makeinstall_std
+%meson_install
 
 %find_lang %{name} --with-gnome
 
