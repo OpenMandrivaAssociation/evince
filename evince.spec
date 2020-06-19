@@ -21,6 +21,7 @@ License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Patch0:		evince-linking.patch
 
 BuildRequires:	meson
 BuildRequires:	pkgconfig(appstream-glib)
