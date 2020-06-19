@@ -1,0 +1,23 @@
+diff -Nrup a/backend/dvi/meson.build b/backend/dvi/meson.build
+--- a/backend/dvi/meson.build	2020-05-30 19:55:04.000000000 +0200
++++ b/backend/dvi/meson.build	2020-06-11 13:58:16.974089493 +0200
+@@ -11,6 +11,7 @@ deps = backends_deps + [
+   libmdvi_dep,
+   libspectre_dep,
+   kpathsea_dep,
++  m_dep,
+   t1_dep,
+ ]
+ 
+diff -Nrup a/backend/tiff/meson.build b/backend/tiff/meson.build
+--- a/backend/tiff/meson.build	2020-05-30 19:55:04.000000000 +0200
++++ b/backend/tiff/meson.build	2020-06-11 14:10:22.231616138 +0200
+@@ -7,7 +7,7 @@ shared_module(
+   backend_name,
+   sources: sources,
+   include_directories: backends_incs,
+-  dependencies: backends_deps + [libtiff_dep],
++  dependencies: backends_deps + [libtiff_dep, m_dep],
+   c_args: backends_cflags,
+   link_args: backends_ldflags,
+   link_depends: backends_symbol_map,
