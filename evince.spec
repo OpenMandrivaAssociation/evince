@@ -171,6 +171,8 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_libdir}/evince/%{major}/backends/tiffdocument.evince-backend
 %{_libdir}/evince/%{major}/backends/libxpsdocument.so
 %{_libdir}/evince/%{major}/backends/xpsdocument.evince-backend
+%{_libdir}/evince/%{major}/backends/libpsdocument.so
+%{_libdir}/evince/%{major}/backends/psdocument.evince-backend
 #{_libdir}/mozilla/plugins/*.so
 %{_libexecdir}/evinced
 %{_datadir}/dbus-1/services/org.gnome.evince.Daemon.service
