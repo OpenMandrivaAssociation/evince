@@ -155,6 +155,8 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_datadir}/glib-2.0/schemas/org.gnome.Evince.gschema.xml
 %{_datadir}/GConf/gsettings/evince.convert
 %{_mandir}/man1/evince.1*
+%{_mandir}/man1/evince-previewer.1.*
+%{_mandir}/man1/evince-thumbnailer.1.*
 %{_libdir}/nautilus/extensions-3.0/libevince*so*
 %dir %{_libdir}/evince/%{major}/
 %dir %{_libdir}/evince/%{major}/backends
