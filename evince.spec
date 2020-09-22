@@ -15,13 +15,12 @@
 
 Summary:	GNOME Document viewer
 Name:		evince
-Version:	3.36.7
+Version:	3.38.0
 Release:	1
 License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
-Patch0:		evince-linking.patch
 
 BuildRequires:	meson
 BuildRequires:	pkgconfig(appstream-glib)
@@ -156,6 +155,8 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_datadir}/glib-2.0/schemas/org.gnome.Evince.gschema.xml
 %{_datadir}/GConf/gsettings/evince.convert
 %{_mandir}/man1/evince.1*
+%{_mandir}/man1/evince-previewer.1.*
+%{_mandir}/man1/evince-thumbnailer.1.*
 %{_libdir}/nautilus/extensions-3.0/libevince*so*
 %dir %{_libdir}/evince/%{major}/
 %dir %{_libdir}/evince/%{major}/backends
@@ -198,7 +199,6 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_libdir}/girepository-1.0/EvinceView-%{gmajor}.typelib
 
 %files -n %{devname}
-%doc ChangeLog
 %{_datadir}/gtk-doc/html/*
 %{_libdir}/libevdocument%{api}.so
 %{_libdir}/libevview%{api}.so
