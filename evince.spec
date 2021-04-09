@@ -22,6 +22,7 @@ Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 
+BuildRequires:	cmake
 BuildRequires:	meson
 BuildRequires:	pkgconfig(appstream-glib)
 BuildRequires:	ghostscript
@@ -49,6 +50,7 @@ BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0.2
 BuildRequires:	pkgconfig(gtk+-unix-print-3.0) >= 3.0.2
 BuildRequires:	pkgconfig(gtk+-x11-3.0)
 BuildRequires:	pkgconfig(ice)
+BuildRequires:	pkgconfig(libhandy-1)
 BuildRequires:	pkgconfig(libgxps) >= 0.2.0
 BuildRequires:	pkgconfig(libnautilus-extension) >= 2.91.4
 BuildRequires:	pkgconfig(libspectre) >= 0.2.0
