@@ -15,8 +15,8 @@
 
 Summary:	GNOME Document viewer
 Name:		evince
-Version:	41.3
-Release:	2
+Version:	42.2
+Release:	1
 License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
 Url:		http://www.gnome.org
@@ -49,6 +49,7 @@ BuildRequires:	pkgconfig(gthread-2.0)
 BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0.2
 BuildRequires:	pkgconfig(gtk+-unix-print-3.0) >= 3.0.2
 BuildRequires:	pkgconfig(gtk+-x11-3.0)
+BuildRequires:	pkgconfig(gi-docgen)
 BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(libhandy-1)
 BuildRequires:	pkgconfig(libgxps) >= 0.2.0
@@ -137,7 +138,6 @@ This is the GNOME Document viewer library, the shared parts of evince.
 	-Dcomics=enabled \
 	-Dps=enabled \
 	-Ddvi=enabled \
-	-Dt1lib=disabled \
 	-Dgtk_doc=true \
 	-Dintrospection=true \
 	-Dmultimedia=enabled
@@ -202,7 +202,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_libdir}/girepository-1.0/EvinceView-%{gmajor}.typelib
 
 %files -n %{devname}
-%{_datadir}/gtk-doc/html/*
+%doc %{_datadir}/doc/libevdocument/
 %{_libdir}/libevdocument%{api}.so
 %{_libdir}/libevview%{api}.so
 %{_libdir}/pkgconfig/evince*pc
