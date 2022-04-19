@@ -203,6 +203,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 
 %files -n %{devname}
 %doc %{_datadir}/doc/libevdocument/
+%doc %{_datadir}/doc/libevview/
 %{_libdir}/libevdocument%{api}.so
 %{_libdir}/libevview%{api}.so
 %{_libdir}/pkgconfig/evince*pc
