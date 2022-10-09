@@ -53,7 +53,7 @@ BuildRequires:	pkgconfig(gi-docgen)
 BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(libhandy-1)
 BuildRequires:	pkgconfig(libgxps) >= 0.2.0
-BuildRequires:	pkgconfig(libnautilus-extension) >= 2.91.4
+#BuildRequires:	pkgconfig(libnautilus-extension) >= 2.91.4
 BuildRequires:	pkgconfig(libspectre) >= 0.2.0
 BuildRequires:	pkgconfig(libxml-2.0) >= 2.5.0
 BuildRequires:	pkgconfig(poppler-glib) >= 0.18.0
