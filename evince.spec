@@ -140,7 +140,8 @@ This is the GNOME Document viewer library, the shared parts of evince.
 	-Ddvi=enabled \
 	-Dgtk_doc=true \
 	-Dintrospection=true \
-	-Dmultimedia=enabled
+	-Dmultimedia=enabled \
+	-Dnautilus=false
 	
 %meson_build
 	
@@ -160,7 +161,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_mandir}/man1/evince.1*
 %{_mandir}/man1/evince-previewer.1.*
 %{_mandir}/man1/evince-thumbnailer.1.*
-%{_libdir}/nautilus/extensions-3.0/libevince*so*
+#{_libdir}/nautilus/extensions-3.0/libevince*so*
 %dir %{_libdir}/evince/%{major}/
 %dir %{_libdir}/evince/%{major}/backends
 %{_libdir}/evince/%{major}/backends/libcomicsdocument.so
