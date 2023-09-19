@@ -182,7 +182,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_libexecdir}/evinced
 %{_datadir}/dbus-1/services/org.gnome.evince.Daemon.service
 %{_datadir}/thumbnailers/evince.thumbnailer
-#{_datadir}/metainfo/org.gnome.Evince.appdata.xml
+%{_datadir}/metainfo/org.gnome.Evince.metainfo.xml
 %{_datadir}/metainfo/%{name}*.metainfo.xml
 %{_userunitdir}/org.gnome.Evince.service
 
