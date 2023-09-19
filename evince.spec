@@ -15,12 +15,12 @@
 
 Summary:	GNOME Document viewer
 Name:		evince
-Version:	44.3
-Release:	2
+Version:	45.0
+Release:	1
 License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
-Url:		http://www.gnome.org
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
+Url:		https://www.gnome.org
+Source0:	https://ftp.gnome.org/pub/GNOME/sources/%{name}/%{url_ver}/%{name}-%{version}.tar.xz
 
 BuildRequires:	cmake
 BuildRequires:	meson
