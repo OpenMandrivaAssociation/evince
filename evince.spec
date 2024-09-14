@@ -64,7 +64,7 @@ BuildRequires:	pkgconfig(gstreamer-1.0)
 BuildRequires:	pkgconfig(gstreamer-base-1.0)
 BuildRequires:	pkgconfig(gstreamer-video-1.0)
 BuildRequires:	pkgconfig(synctex)
-BuildRequires:	pkgconfig(evince-view-3.0)
+#BuildRequires:	pkgconfig(evince-view-3.0)
 BuildRequires:	gnome-common
 BuildRequires:	yelp-tools
 BuildRequires:	gettext-devel
