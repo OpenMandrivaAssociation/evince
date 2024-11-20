@@ -16,7 +16,7 @@
 Summary:	GNOME Document viewer
 Name:		evince
 Version:	46.3.1
-Release:	2
+Release:	3
 License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
 Url:		https://www.gnome.org
