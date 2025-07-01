@@ -29,6 +29,7 @@ BuildRequires:	ghostscript
 BuildRequires:	gtk-doc
 BuildRequires:	intltool
 BuildRequires:	itstool
+BuildRequires:	desktop-file-utils
 BuildRequires:	kpathsea-devel
 BuildRequires:	tiff-devel
 BuildRequires:	pkgconfig(cairo) >= 1.10.0
