@@ -158,7 +158,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %files -f %{name}.lang
 %doc NEWS AUTHORS TODO
 %{_bindir}/*
-%{_datadir}/evince
+#{_datadir}/evince
 %{_datadir}/applications/*
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Evinc*
 %{_datadir}/glib-2.0/schemas/org.gnome.Evince.gschema.xml
@@ -185,7 +185,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_libdir}/evince/%{major}/backends/psdocument.evince-backend
 #{_libdir}/mozilla/plugins/*.so
 %{_libexecdir}/evinced
-%{_datadir}/dbus-1/services/org.gnome.evince.Daemon.service
+#{_datadir}/dbus-1/services/org.gnome.evince.Daemon.service
 %{_datadir}/thumbnailers/evince.thumbnailer
 %{_datadir}/metainfo/org.gnome.Evince.metainfo.xml
 %{_datadir}/metainfo/%{name}*.metainfo.xml
