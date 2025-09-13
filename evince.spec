@@ -15,7 +15,7 @@
 
 Summary:	GNOME Document viewer
 Name:		evince
-Version:	48.1
+Version:	49.alpha
 Release:	1
 License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
@@ -47,9 +47,7 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0) >= 0.6
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
 BuildRequires:	pkgconfig(gthread-2.0)
-BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0.2
-BuildRequires:	pkgconfig(gtk+-unix-print-3.0) >= 3.0.2
-BuildRequires:	pkgconfig(gtk+-x11-3.0)
+BuildRequires:	pkgconfig(gtk4)
 BuildRequires:	pkgconfig(gi-docgen)
 BuildRequires:	pkgconfig(ice)
 BuildRequires:	pkgconfig(libhandy-1)
