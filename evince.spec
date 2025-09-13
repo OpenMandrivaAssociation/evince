@@ -43,7 +43,7 @@ BuildRequires:	pkgconfig(gio-2.0) >= 2.31.0
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:	pkgconfig(adwaita-icon-theme) >= 2.17.1
 BuildRequires:	pkgconfig(gnome-keyring-1) >= 2.22.0
-BuildRequires:  pkgconfig(gnome-desktop-3.0)
+BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0) >= 0.6
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
