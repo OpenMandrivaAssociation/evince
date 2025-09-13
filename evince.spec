@@ -137,9 +137,13 @@ This is the GNOME Document viewer library, the shared parts of evince.
 	-Dcomics=enabled \
 	-Dps=enabled \
 	-Ddvi=enabled \
+ 	-Ddjvu=enabled \
+  	-Dpdf=enabled \
+   	-Dps=enabled \
+	-Dtiff=enabled \
+ 	-Dxps=enabled \
 	-Dgtk_doc=true \
 	-Dintrospection=true \
-	-Dmultimedia=enabled \
 	-Dnautilus=false
 	
 %meson_build
