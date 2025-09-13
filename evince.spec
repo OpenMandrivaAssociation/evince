@@ -2,7 +2,7 @@
 %define _disable_rebuild_configure 1
 
 %define build_dvi	1
-%define major	4
+%define major	6
 %define major_evdocument	4
 %define major_evview		3
 %define api	3
