@@ -50,6 +50,7 @@ BuildRequires:	pkgconfig(gthread-2.0)
 BuildRequires:	pkgconfig(gtk4)
 BuildRequires:	pkgconfig(gi-docgen)
 BuildRequires:	pkgconfig(ice)
+BuildRequires:	pkgconfig(libadwaita-1)
 BuildRequires:	pkgconfig(libhandy-1)
 BuildRequires:	pkgconfig(libgxps) >= 0.2.0
 #BuildRequires:	pkgconfig(libnautilus-extension) >= 2.91.4
