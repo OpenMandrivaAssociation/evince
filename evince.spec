@@ -201,7 +201,7 @@ This is the GNOME Document viewer library, the shared parts of evince.
 #{_libdir}/libevdocument%{api}.so.%{major_evdocument}*
 
 %files -n %{libevview}
-%{_libdir}/libevview%{api}.so.%{major_evview}*
+#{_libdir}/libevview%{api}.so.%{major_evview}*
 
 %files -n %{girname}
 %{_libdir}/girepository-1.0/EvinceDocument-%{gmajor}.typelib
