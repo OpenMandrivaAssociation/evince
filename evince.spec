@@ -210,10 +210,10 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %files -n %{devname}
 %doc %{_datadir}/doc/libevdocument/
 %doc %{_datadir}/doc/libevview/
-%{_libdir}/libevdocument%{api}.so
-%{_libdir}/libevview%{api}.so
-%{_libdir}/pkgconfig/evince*pc
-%{_includedir}/evince*
-%{_datadir}/gir-1.0/EvinceDocument-%{gmajor}.gir
-%{_datadir}/gir-1.0/EvinceView-%{gmajor}.gir
+#{_libdir}/libevdocument%{api}.so
+#{_libdir}/libevview%{api}.so
+#{_libdir}/pkgconfig/evince*pc
+#{_includedir}/evince*
+#{_datadir}/gir-1.0/EvinceDocument-%{gmajor}.gir
+#{_datadir}/gir-1.0/EvinceView-%{gmajor}.gir
 
