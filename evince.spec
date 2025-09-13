@@ -36,6 +36,7 @@ BuildRequires:	pkgconfig(cairo) >= 1.10.0
 BuildRequires:	pkgconfig(cairo-pdf)
 BuildRequires:	pkgconfig(cairo-ps)
 BuildRequires:	pkgconfig(ddjvuapi) >= 3.5.17
+BuildRequires:  pkgconfig(exempi-2.0)
 BuildRequires:	pkgconfig(gail-3.0) >= 3.0.2
 BuildRequires:	pkgconfig(gio-2.0) >= 2.31.0
 #BuildRequires:	pkgconfig(gnome-doc-utils)
