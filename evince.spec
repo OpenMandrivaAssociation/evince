@@ -2,11 +2,11 @@
 %define _disable_rebuild_configure 1
 
 %define build_dvi	1
-%define major	4
-%define major_evdocument	4
-%define major_evview		3
+%define major	6
+%define major_evdocument	6
+%define major_evview		5
 %define api	3
-%define gmajor	3.0
+%define gmajor	4.0
 %define libevdocument	%mklibname evdocument %{api} %{major_evdocument}
 %define libevview	%mklibname evview %{api} %{major_evview}
 %define girname	%mklibname %{name}-gir %{gmajor}
@@ -15,7 +15,7 @@
 
 Summary:	GNOME Document viewer
 Name:		evince
-Version:	48.1
+Version:	49.alpha
 Release:	1
 License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
@@ -36,22 +36,22 @@ BuildRequires:	pkgconfig(cairo) >= 1.10.0
 BuildRequires:	pkgconfig(cairo-pdf)
 BuildRequires:	pkgconfig(cairo-ps)
 BuildRequires:	pkgconfig(ddjvuapi) >= 3.5.17
+BuildRequires:  pkgconfig(exempi-2.0)
 BuildRequires:	pkgconfig(gail-3.0) >= 3.0.2
 BuildRequires:	pkgconfig(gio-2.0) >= 2.31.0
 #BuildRequires:	pkgconfig(gnome-doc-utils)
 BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:	pkgconfig(adwaita-icon-theme) >= 2.17.1
 BuildRequires:	pkgconfig(gnome-keyring-1) >= 2.22.0
-BuildRequires:  pkgconfig(gnome-desktop-3.0)
+BuildRequires:  pkgconfig(gnome-desktop-4)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:	pkgconfig(gobject-introspection-1.0) >= 0.6
 BuildRequires:	pkgconfig(gsettings-desktop-schemas)
 BuildRequires:	pkgconfig(gthread-2.0)
-BuildRequires:	pkgconfig(gtk+-3.0) >= 3.0.2
-BuildRequires:	pkgconfig(gtk+-unix-print-3.0) >= 3.0.2
-BuildRequires:	pkgconfig(gtk+-x11-3.0)
+BuildRequires:	pkgconfig(gtk4)
 BuildRequires:	pkgconfig(gi-docgen)
 BuildRequires:	pkgconfig(ice)
+BuildRequires:	pkgconfig(libadwaita-1)
 BuildRequires:	pkgconfig(libhandy-1)
 BuildRequires:	pkgconfig(libgxps) >= 0.2.0
 #BuildRequires:	pkgconfig(libnautilus-extension) >= 2.91.4
@@ -139,9 +139,13 @@ This is the GNOME Document viewer library, the shared parts of evince.
 	-Dcomics=enabled \
 	-Dps=enabled \
 	-Ddvi=enabled \
+ 	-Ddjvu=enabled \
+  	-Dpdf=enabled \
+   	-Dps=enabled \
+	-Dtiff=enabled \
+ 	-Dxps=enabled \
 	-Dgtk_doc=true \
 	-Dintrospection=true \
-	-Dmultimedia=enabled \
 	-Dnautilus=false
 	
 %meson_build
@@ -154,15 +158,12 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %files -f %{name}.lang
 %doc NEWS AUTHORS TODO
 %{_bindir}/*
-%{_datadir}/evince
 %{_datadir}/applications/*
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Evinc*
 %{_datadir}/glib-2.0/schemas/org.gnome.Evince.gschema.xml
-#{_datadir}/GConf/gsettings/evince.convert
 %{_mandir}/man1/evince.1*
 %{_mandir}/man1/evince-previewer.1.*
 %{_mandir}/man1/evince-thumbnailer.1.*
-#{_libdir}/nautilus/extensions-3.0/libevince*so*
 %dir %{_libdir}/evince/%{major}/
 %dir %{_libdir}/evince/%{major}/backends
 %{_libdir}/evince/%{major}/backends/libcomicsdocument.so
@@ -171,20 +172,17 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %{_libdir}/evince/%{major}/backends/djvudocument.evince-backend
 %{_libdir}/evince/%{major}/backends/libpdfdocument.so
 %{_libdir}/evince/%{major}/backends/pdfdocument.evince-backend
-#{_libdir}/evince/%{major}/backends/libpsdocument.so
-#{_libdir}/evince/%{major}/backends/psdocument.evince-backend
 %{_libdir}/evince/%{major}/backends/libtiffdocument.so
 %{_libdir}/evince/%{major}/backends/tiffdocument.evince-backend
 %{_libdir}/evince/%{major}/backends/libxpsdocument.so
 %{_libdir}/evince/%{major}/backends/xpsdocument.evince-backend
 %{_libdir}/evince/%{major}/backends/libpsdocument.so
 %{_libdir}/evince/%{major}/backends/psdocument.evince-backend
-#{_libdir}/mozilla/plugins/*.so
 %{_libexecdir}/evinced
-%{_datadir}/dbus-1/services/org.gnome.evince.Daemon.service
 %{_datadir}/thumbnailers/evince.thumbnailer
 %{_datadir}/metainfo/org.gnome.Evince.metainfo.xml
 %{_datadir}/metainfo/%{name}*.metainfo.xml
+%{_datadir}/dbus-1/services/org.gnome.Evince.Daemon.service
 %{_userunitdir}/org.gnome.Evince.service
 
 %if %{build_dvi}
@@ -194,10 +192,10 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %endif
 
 %files -n %{libevdocument}
-%{_libdir}/libevdocument%{api}.so.%{major_evdocument}*
+%{_libdir}/libevdocument-%{gmajor}.so.%{major_evdocument}*
 
 %files -n %{libevview}
-%{_libdir}/libevview%{api}.so.%{major_evview}*
+%{_libdir}/libevview-%{gmajor}.so.%{major_evview}*
 
 %files -n %{girname}
 %{_libdir}/girepository-1.0/EvinceDocument-%{gmajor}.typelib
@@ -206,10 +204,10 @@ This is the GNOME Document viewer library, the shared parts of evince.
 %files -n %{devname}
 %doc %{_datadir}/doc/libevdocument/
 %doc %{_datadir}/doc/libevview/
-%{_libdir}/libevdocument%{api}.so
-%{_libdir}/libevview%{api}.so
-%{_libdir}/pkgconfig/evince*pc
+%{_libdir}/libevdocument-%{gmajor}.so
+%{_libdir}/libevview-%{gmajor}.so
+%{_libdir}/pkgconfig/evince-document-%{gmajor}.pc
+%{_libdir}/pkgconfig/evince-view-%{gmajor}.pc
 %{_includedir}/evince*
 %{_datadir}/gir-1.0/EvinceDocument-%{gmajor}.gir
 %{_datadir}/gir-1.0/EvinceView-%{gmajor}.gir
-
