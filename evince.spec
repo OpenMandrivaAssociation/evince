@@ -15,8 +15,8 @@
 
 Summary:	GNOME Document viewer
 Name:		evince
-Version:	49.alpha
-Release:	2
+Version:	49.alpha.1
+Release:	1
 License:	GPLv2+ and GFDL+
 Group:		Graphical desktop/GNOME
 Url:		https://www.gnome.org
