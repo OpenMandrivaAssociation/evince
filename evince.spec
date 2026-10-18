@@ -128,8 +128,11 @@ Provides:	%{name}-devel = %{version}-%{release}
 This is the GNOME Document viewer library, the shared parts of evince.
 
 %prep
-%setup -qn %{name}-%{version}
-%autopatch -p1
+%autosetup -n %{name}-%{version} -p1
+
+# Fix build with GTK 4.24+
+sed -i 's|#include <gdk/gdkkeysyms.h>|#include <gdk/gdk.h>|' \
+    libview/ev-view-presentation.c
 
 %build
 
